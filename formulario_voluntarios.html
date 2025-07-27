@@ -1,0 +1,62 @@
+<!-- archivo: formulario_voluntarios.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Voluntarios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    form {
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    input, select, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Registro de Voluntarios</h2>
+  <form id="voluntarioForm">
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    <input type="email" id="correo" placeholder="Correo electrónico" required>
+    <input type="text" id="tarea" placeholder="Tarea asignada" required>
+    <select id="estado">
+      <option value="Pendiente">Pendiente</option>
+      <option value="En progreso">En progreso</option>
+      <option value="Completado">Completado</option>
+    </select>
+    <button type="submit">Registrar</button>
+  </form>
+
+  <script>
+    document.getElementById("voluntarioForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      const correo = document.getElementById("correo").value;
+      const tarea = document.getElementById("tarea").value;
+      const estado = document.getElementById("estado").value;
+
+      if (!nombre || !correo || !tarea) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo)) {
+        alert("Correo inválido.");
+        return;
+      }
+
+      alert("Voluntario registrado correctamente.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
